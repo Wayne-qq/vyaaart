@@ -7,7 +7,7 @@ body, html {
 
 
 .main__preloader {
-      background-image: url('../img/bg-preloader.png');
+    background-image: url('../img/bg-preloader.png');
     height: 100vh;
     background-size: cover;
     display: block;
@@ -170,10 +170,7 @@ body, html {
 }
 
 .sub__logoname {
-    position: absolute;
-    bottom: 16px; /* прижимає до низу */
-    left: 0; /* опціонально, для вирівнювання по горизонталі */
-    right: 0; /* опціонально, для вирівнювання по горизонталі */
+    margin-top: 270px;
 }
 .sub__vaard {
     color: #CDCDCD;
@@ -192,5 +189,4 @@ body, html {
     color: #CDCDCD;
     text-align: center;
 }
-
 
