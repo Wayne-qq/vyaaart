@@ -1,0 +1,196 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+
+.main__preloader {
+    background-image: url(/img/bg-preloader.png);
+    height: 100vh;
+    background-size: cover;
+    display: none;
+}
+
+.main__preloader.hidden {
+    display: none;
+}
+
+
+.container {
+    padding: 2px 10px;
+}
+
+
+.logo {
+    padding-top: 240px;
+    display: flex;
+    margin: 0 auto;
+    /* Початкова позиція поза екраном */
+    transform: translateY(-100%);
+    /* Налаштування анімації */
+    animation: dropDown 1.2s ease-out forwards;
+}
+
+/* Визначення ключових кадрів для анімації */
+@keyframes dropDown {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
+
+
+
+
+.logo__t {
+    color: #CDCDCD;
+    font-family: MuseoModerno;
+    font-size: 40px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 18px;
+    /* Початкова позиція поза екраном ліворуч */
+    transform: translateX(-100%);
+    /* Налаштування анімації для виїзду тексту */
+    animation: slideIn 1.2s ease-out forwards, gradientShift 2s infinite; 
+    background: linear-gradient(to right, #CDCDCD 20%, #74cb6c 40%, #a9e2a4 60%, #CDCDCD 80%);
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Визначення ключових кадрів для анімації виїзду */
+@keyframes slideIn {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* Визначення ключових кадрів для анімації переливання */
+@keyframes gradientShift {
+    0% {
+        background-position: 0% center;
+    }
+    100% {
+        background-position: 200% center;
+    }
+}
+
+.logo__t::after {
+    /* Затримка початку анімації градієнту */
+    animation-delay: 10s;
+}
+
+
+.logo__b {
+    color: #CDCDCD;
+    font-family: 'MuseoModerno', sans-serif;
+    font-size: 24px;
+    font-weight: 200;
+    text-align: center;
+    visibility: hidden; /* Спочатку приховуємо текст */
+}
+
+
+
+
+
+
+.main__sub {
+    background: #000000;
+    height: 100vh;
+    display: block;
+}
+
+.main__sub.hidden {
+    display: none;
+}
+
+.error__sub-tg {
+    padding: 20px;
+}
+
+.subscription__error {
+    color: #CDCDCD;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 400;
+    max-width: 187px;
+    margin: 0 auto;
+}
+
+
+.close__error {
+    display: flex;
+    margin: 0 auto;
+}
+
+.subscribe__subscribe-tg {
+    color: #CDCDCD;
+    font-family: MuseoModerno;
+    font-size: 40px;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 185px;
+    margin-bottom: 35px;
+}
+
+.subscription__button-tg {
+    border-radius: 30px;
+    border: 1px solid #FFF;
+    padding: 8px 8px;
+    display: flex;
+    align-items: center;
+    max-width: 177px;
+    margin: 0 auto;
+}
+
+.vaard__channel-link {
+    margin-left: auto;
+    padding: 7.5px 27px;
+    border-radius: 27px;
+    background: #67FF59;
+    text-decoration: none;
+    color: #181818;
+    font-family: Montserrat;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.sub__logoname {
+    position: absolute;
+    bottom: 16px; /* прижимає до низу */
+    left: 0; /* опціонально, для вирівнювання по горизонталі */
+    right: 0; /* опціонально, для вирівнювання по горизонталі */
+}
+.sub__vaard {
+    color: #CDCDCD;
+    font-family: MuseoModerno;
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 11px;
+}
+
+.sub__token {
+    color: #CDCDCD;
+    font-family: MuseoModerno;
+    font-size: 16px;
+    font-weight: 200;
+    color: #CDCDCD;
+    text-align: center;
+}
+
+
