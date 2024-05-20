@@ -10,7 +10,7 @@ body, html {
     background-image: url(/img/bg-preloader.png);
     height: 100vh;
     background-size: cover;
-    display: none;
+    display: block;
 }
 
 .main__preloader.hidden {
