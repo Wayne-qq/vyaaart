@@ -65,4 +65,12 @@ function checkHiddenElements() {
     }
 }
 
-
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('mine__mining').addEventListener('click', function(event) {
+        event.preventDefault(); // Зупиняємо дію за замовчуванням для <a> посилання
+        var mainHome = document.querySelector('.main__home');
+        if (mainHome) {
+            mainHome.classList.toggle('hidden'); // Додаємо або видаляємо клас 'hidden'
+        }
+    });
+});
