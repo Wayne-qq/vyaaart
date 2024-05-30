@@ -104,6 +104,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 document.addEventListener("DOMContentLoaded", function() {
+    function setCookie(name, value, days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days*24*60*60*1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+    }
+
+    function getCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return null;
+    }
+
     function startTimer(endtime) {
         const timerInterval = setInterval(function() {
             const now = new Date().getTime();
@@ -115,13 +136,11 @@ document.addEventListener("DOMContentLoaded", function() {
                 return;
             }
 
-            // Обрахунок днів, годин, хвилин та секунд
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            // Відображення часу на сторінці
             document.getElementById('days').textContent = days + "D";
             document.getElementById('hours').textContent = hours + "h";
             document.getElementById('minutes').textContent = minutes + "m";
@@ -129,24 +148,12 @@ document.addEventListener("DOMContentLoaded", function() {
         }, 1000);
     }
 
-    // Читання чи установка часу завершення
-    let endTime = localStorage.getItem("endTime");
+    let endTime = getCookie("endTime");
     if (!endTime) {
         const now = new Date().getTime();
-        // Наприклад, таймер на 2 дні, 18 годин, 37 хвилин, 9 секунд
         endTime = now + (2 * 24 * 60 * 60 * 1000) + (18 * 60 * 60 * 1000) + (37 * 60 * 1000) + (9 * 1000);
-        localStorage.setItem("endTime", endTime);
+        setCookie("endTime", endTime, 7); // Зберігаємо куки на 7 днів
     }
 
     startTimer(parseInt(endTime));
 });
-
-
-
-
-
-
-
-
-
-
