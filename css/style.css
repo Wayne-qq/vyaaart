@@ -5,6 +5,21 @@ body, html {
     overflow: hidden;
 }
 
+.main__home, .main__mining, .main__friend, .main__task, .main__user {
+    display: none;
+}
+.main__home {
+    display: none;
+}
+a,
+button,
+input,
+textarea {
+	-webkit-tap-highlight-color: transparent;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
 .header__pre {
     height: 83px;
     background-color: #575757;
@@ -20,8 +35,11 @@ body, html {
 }
 
 
+
+
 .main__preloader {
-    background-image: url('../img/bg-preloader.png');
+    /* background-image: url('../img/bg-preloader.png'); */
+    background-color: #000;
     height: 100vh;
     background-size: cover;
     display: block;
@@ -118,13 +136,97 @@ body, html {
 
 
 
+.main__time {
+    background-color: #000;
+    height: 100vh;
+}
 
+.timer1 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.time__logo-t {
+    margin-top: -25px;
+    color: #CDCDCD;
+    font-family: MuseoModerno;
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.time__logo-b {
+    margin-top: 11px;
+    color: #CDCDCD;
+    font-family: MuseoModerno;
+    font-size: 16px;
+    font-weight: 200;
+    text-align: center;
+}
+
+.time__num {
+    color: #666;
+    text-align: center;
+    font-family: MuseoModerno;
+    font-size: 64px;
+    font-weight: 500;
+    line-height: 110%;
+    margin-top: 115px;
+    max-width: 280px;
+}
+.seconds {
+    color: #67FF59;
+}
+
+
+.time__info {
+    color: #CDCDCD;
+    text-align: center;
+    font-family: MuseoModerno;
+    font-size: 15px;
+    font-weight: 400;
+    margin-top: 91px;
+}
+
+.time__sub{
+    width: 135px;
+    flex-shrink: 0;
+    color: #181818;
+    font-family: Montserrat;
+    font-size: 13px;
+    font-weight: 700;
+    border-radius: 27px;
+    background: #67FF59;
+    text-align: center;
+    padding: 7.5px 0px;
+    margin-left: auto;
+}
+.timer__sub-box {
+    border-radius: 30px;
+    border: 1px solid #FFF;
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    width: 175px;
+    height: 28px;
+    flex-shrink: 0;
+    margin-top: 9px;
+}
+
+
+.main__time {
+    display: block;
+}
+.main__time.hide {
+    display: none;
+}
 
 
 .main__sub {
     background: #000000;
     height: 100vh;
-    display: block;
+    display: none;
 }
 
 .main__sub.hidden {
@@ -207,13 +309,10 @@ body, html {
 .main__home {
     background-color: #000000;
     height: 100vh;
-    display: block;
 }
 
 
-.main__home.hidden {
-    display: none;
-}
+
 
 
 .hi {
@@ -372,12 +471,16 @@ body, html {
 
 
 
+
 .menu {
-	margin-bottom: 8px;
-	left: 0;
-	right: 0;
-	bottom: 20px;
+    right: 0;
+    left: 0;
+    bottom: 20px;
+    position: fixed;
 }
+
+
+
 .menu__list {
 	display: flex;
 	justify-content: center;
@@ -453,12 +556,12 @@ body, html {
     align-items: center;
     margin: 0 auto;
     overflow-y: auto;
-    scrollbar-width: none; /* приховує полосу прокрутки в Firefox */
-    -ms-overflow-style: none; /* приховує полосу прокрутки в IE та Edge */
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
 }
 
 .mining__mine::-webkit-scrollbar {
-    display: none; /* приховує полосу прокрутки в Chrome, Safari та Opera */
+    display: none; 
 }
 
 .mine__info-top {
@@ -514,6 +617,10 @@ body, html {
     margin-right: auto;
 }
 
+.last__b0ost {
+    margin-bottom: 45px;
+}
+
 .home__user-2 {
     margin-bottom: 43px;
 }
@@ -522,4 +629,241 @@ body, html {
     padding-top: 31px;
     display: flex;
     margin: 0 auto;
+}
+
+
+.main__friend {
+    background-color: #000000;
+    height: 100vh;
+}
+
+
+.friend__block {
+    margin: 0 auto;
+    width: 329px;
+    height: 439px;
+    border-radius: 12px;
+    border: 1px solid #BCBCBC;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.friend__txt-top {
+    margin-top: 39px;
+    margin-bottom: 10px;
+    color: #CDCDCD;
+    font-family: Montserrat;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+.friend__txt-bt {
+    color: #838383;
+    font-family: Montserrat;
+    font-size: 10px;
+    font-weight: 300;
+    margin-left: -46px;
+    margin-bottom: 23px;
+}
+
+.friend__btn {
+    margin-top: 16px;
+    width: 233px;
+    height: 18px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    border: 1px solid #BCBCBC;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.friend__btn-info {
+    color: #FFF;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.friend__btn-num {
+    color: #C4C4C4;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-left: 3px;
+    margin-right: auto;
+}
+
+.friend__rectangle {
+    margin: 0px 10px;
+}
+
+.friend__triangle {
+    margin-top: 35px;
+}
+
+
+.main__task {
+    background: #000000;
+    height: 100vh;
+}
+
+
+.task__block {
+    width: 329px;
+    height: 439px;
+    border-radius: 12px;
+    border: 1px solid #BCBCBC;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    overflow: hidden;
+    overflow-y: auto;
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+}
+
+
+.task__block::-webkit-scrollbar {
+    display: none; /* приховує полосу прокрутки в Chrome, Safari та Opera */
+}
+
+
+.task__txt-top {
+    color: #CDCDCD;
+    font-family: Montserrat;
+    font-size: 13px;
+    font-weight: 700;
+    margin: 39px 0px 11px 0px;
+}
+
+.task__txt-bt {
+    max-width: 223px;
+    color: #838383;
+    font-family: Montserrat;
+    font-size: 10px;
+    font-weight: 300;
+    margin-bottom: 9px;
+}
+
+.task__btn {
+    display: flex;
+    align-items: center;
+    border-radius: 12px;
+    border: 1px solid #BCBCBC;
+    width: 233px;
+    height: 18px;
+    flex-shrink: 0;
+    padding: 20px;
+    margin-top: 17px;
+}
+
+.btn__info {
+    color: #FFF;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: 5px;
+}
+
+.task__num {
+    color: #C4C4C4;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 400;
+    margin-right: auto;
+    margin-left: 3px;
+}
+
+.task__rectangle {
+    margin: 0px 13px;
+}
+
+.task__btn-last {
+    margin-bottom: 17px;
+}
+
+.task__decor {
+    display: flex;
+    margin: 0 auto;
+    margin-top: 50.5px;
+}
+
+.main__user {
+    background: #000;
+    height: 100vh;
+}
+
+.user__cont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.user__balance {
+    display: flex;
+    align-items: center;
+}
+.user__balance-img {
+    width: 19px;
+    height: 33px;
+}
+
+.user__balance-num {
+    color: #FFF;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.user__balance-p {
+    margin-top: 7px;
+    color: #838383;
+    font-family: Montserrat;
+    font-size: 10px;
+    font-weight: 300;
+    margin-bottom: 46px;
+}
+
+.user__btn-info {
+    color: #FFF;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 400;
+    margin-right: auto;
+}
+
+
+.user__btn {
+    height: 23px;
+    width: 273px;
+    padding: 19px 19px 19px 19px;
+    border-radius: 12px;
+    border: 1px solid #BCBCBC;
+    background: #0C0C0C;
+    box-shadow: 0px 4px 0px 0px rgba(83, 255, 67, 0.70);
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+} 
+
+
+.menu {
+    display: none;
 }
