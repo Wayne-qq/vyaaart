@@ -1,5 +1,5 @@
 
-// Анімація слова Token прелоадер
+
 
 document.addEventListener("DOMContentLoaded", function() {
     setTimeout(function() {
@@ -25,52 +25,128 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-// Код для приховування прелоадера через 3 секунди
-window.addEventListener('load', function() {
-    // Виконуємо через 3 секунди після завантаження сторінки
+document.addEventListener("DOMContentLoaded", function() {
     setTimeout(function() {
-        // Знаходимо елемент з класом 'main__preloader'
-        const preloader = document.querySelector('.main__preloader');
-        if (preloader) {
-            // Додаємо клас 'hidden' щоб зробити його невидимим
-            preloader.classList.add('hidden');
-            checkHiddenElements(); // Перевіряємо, чи обидва елементи приховані
-        }
-    }, 3000); // 3000 мілісекунд = 3 секунди
+        var preloader = document.querySelector(".main__preloader");
+        preloader.classList.add("hidden");
+    }, 2900); // Встановлюємо затримку в 2.5 секунди
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-    const links = document.querySelectorAll('#main__sub a');
-    links.forEach(link => {
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    const closeButton = document.querySelector('.close__error-sub');
+    const mainElement = document.querySelector('.main__sub');
+
+    closeButton.addEventListener('click', function(event) {
+        event.preventDefault();
+        mainElement.classList.add('hidden');
+    });
+});
+
+
+
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const navLinks = document.querySelectorAll('.nav__link');
+    const userLinks = document.querySelectorAll('.main__user-link');
+
+    navLinks.forEach(link => {
         link.addEventListener('click', function(event) {
-            event.preventDefault(); // Запобігаємо переходу за посиланням
-            const sub = document.getElementById('main__sub');
-            if (sub) {
-                sub.classList.add('hidden');
-                checkHiddenElements(); // Перевіряємо, чи обидва елементи приховані
-            }
+            event.preventDefault();
+            const target = link.getAttribute('data-target');
+            showPage(target);
+            setActiveLink(link);
         });
     });
-});
 
-function checkHiddenElements() {
-    const preloader = document.querySelector('.main__preloader');
-    const sub = document.querySelector('#main__sub');
-    const menu = document.querySelector('.menu');
+    userLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            showPage('main__user');
+            setActiveLink(null);
+        });
+    });
 
-    if (preloader && sub && menu) {
-        if (preloader.classList.contains('hidden') && sub.classList.contains('hidden')) {
-            menu.style.position = 'fixed';
+    function showPage(className) {
+        let pages = document.querySelectorAll('main');
+        pages.forEach(page => {
+            if (page.classList.contains(className)) {
+                page.style.display = 'block';
+            } else {
+                page.style.display = 'none';
+            }
+        });
+    }
+
+    function setActiveLink(activeLink) {
+        navLinks.forEach(link => link.classList.remove('active'));
+        if (activeLink) {
+            activeLink.classList.add('active');
         }
     }
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('mine__mining').addEventListener('click', function(event) {
-        event.preventDefault(); // Зупиняємо дію за замовчуванням для <a> посилання
-        var mainHome = document.querySelector('.main__home');
-        if (mainHome) {
-            mainHome.classList.toggle('hidden'); // Додаємо або видаляємо клас 'hidden'
-        }
-    });
 });
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    function startTimer(endtime) {
+        const timerInterval = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = endtime - now;
+
+            if (distance < 0) {
+                clearInterval(timerInterval);
+                document.querySelector('.main__time').classList.add('hide');
+                return;
+            }
+
+            // Обрахунок днів, годин, хвилин та секунд
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Відображення часу на сторінці
+            document.getElementById('days').textContent = days + "D";
+            document.getElementById('hours').textContent = hours + "h";
+            document.getElementById('minutes').textContent = minutes + "m";
+            document.getElementById('seconds').textContent = seconds + "s";
+        }, 1000);
+    }
+
+    // Читання чи установка часу завершення
+    let endTime = localStorage.getItem("endTime");
+    if (!endTime) {
+        const now = new Date().getTime();
+        // Наприклад, таймер на 2 дні, 18 годин, 37 хвилин, 9 секунд
+        endTime = now + (2 * 24 * 60 * 60 * 1000) + (18 * 60 * 60 * 1000) + (37 * 60 * 1000) + (9 * 1000);
+        localStorage.setItem("endTime", endTime);
+    }
+
+    startTimer(parseInt(endTime));
+});
+
+
+
+
+
+
+
+
+
+
