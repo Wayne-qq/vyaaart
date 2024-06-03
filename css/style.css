@@ -141,7 +141,7 @@ textarea {
 }
 
 .main__time {
-    display: block; 
+    display: none; 
 }
 .main__time.hidden {
     display: none;
@@ -255,7 +255,7 @@ textarea {
 .main__ref {
     background-color: #000;
     height: 100vh;
-    display: block;
+    display: none;
 }
 
 .main__ref.hidden {
