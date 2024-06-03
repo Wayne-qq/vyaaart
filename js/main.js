@@ -275,6 +275,8 @@ document.addEventListener("DOMContentLoaded", function() {
 // });
 
 
+
+
 document.addEventListener("DOMContentLoaded", function() {
     Telegram.WebApp.ready();
 
@@ -287,18 +289,26 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    if (userData && userData.username && userData.username.startsWith('@')) {
-        updateUserText(".home__user", userData.username);
-        updateUserText(".mining__userc", userData.username);
-        updateUserText(".friend__userc", userData.username);
-        updateUserText(".task__userc", userData.username);
-        updateUserText(".home__userc", userData.username);
-    } else if (userData && userData.first_name) {
-        updateUserText(".home__user", userData.first_name);
-        updateUserText(".mining__userc", userData.first_name);
-        updateUserText(".friend__userc", userData.first_name);
-        updateUserText(".task__userc", userData.first_name);
-        updateUserText(".home__userc", userData.first_name);
+    if (userData) {
+        if (userData.username && userData.username.startsWith('@')) {
+            updateUserText(".home__user", userData.username);
+            updateUserText(".mining__userc", userData.username);
+            updateUserText(".friend__userc", userData.username);
+            updateUserText(".task__userc", userData.username);
+            updateUserText(".home__userc", userData.username);
+        } else if (userData.first_name) {
+            updateUserText(".home__user", userData.first_name);
+            updateUserText(".mining__userc", userData.first_name);
+            updateUserText(".friend__userc", userData.first_name);
+            updateUserText(".task__userc", userData.first_name);
+            updateUserText(".home__userc", userData.first_name);
+        } else {
+            updateUserText(".home__user", 'error');
+            updateUserText(".mining__userc", 'error');
+            updateUserText(".friend__userc", 'error');
+            updateUserText(".task__userc", 'error');
+            updateUserText(".home__userc", 'error');
+        }
     } else {
         updateUserText(".home__user", 'error');
         updateUserText(".mining__userc", 'error');
@@ -307,6 +317,18 @@ document.addEventListener("DOMContentLoaded", function() {
         updateUserText(".home__userc", 'error');
     }
 });
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
