@@ -38,15 +38,47 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-document.addEventListener("DOMContentLoaded", function() {
-    const closeButton = document.querySelector('.close__error-sub');
-    const mainElement = document.querySelector('.main__sub');
+// document.addEventListener("DOMContentLoaded", function() {
+//     const closeButton = document.querySelector('.close__error-sub');
+//     const mainElement = document.querySelector('.main__sub');
 
-    closeButton.addEventListener('click', function(event) {
-        event.preventDefault();
-        mainElement.classList.add('hidden');
-    });
-});
+//     closeButton.addEventListener('click', function(event) {
+//         event.preventDefault();
+//         mainElement.classList.add('hidden');
+//     });
+// });
+
+
+const fetch = require('node-fetch');
+
+// Токен вашого бота
+const botToken = '7480014836:AAGbY8Ybylr8KWJjN-8JRktq0k-EYYeJvPc';
+// Посилання на ваш приватний канал
+const channelLink = 'https://t.me/+jOrwLOXob0o2YTIy';
+
+// Функція для перевірки підписки користувача на канал
+async function checkSubscription(username) {
+    const apiUrl = `https://api.telegram.org/bot${botToken}/getChatMember?chat_id=${channelLink}&user_id=${username}`;
+
+    try {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+
+        if (data.ok && data.result && (data.result.status === 'member' || data.result.status === 'administrator')) {
+            console.log('Користувач підписаний на канал.');
+            // Додаємо клас "hidden", якщо користувач підписаний на канал
+            document.getElementById('main__sub').classList.add('hidden');
+        } else {
+            console.log('Користувач не підписаний на канал.');
+        }
+    } catch (error) {
+        console.error('Сталася помилка при перевірці підписки на канал:', error);
+    }
+}
+
+// Викликаємо функцію для перевірки підписки користувача з його username
+checkSubscription('User_Username');
+
 
 
 
@@ -119,44 +151,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-// const targetDate = new Date();
-
-// targetDate.setDate(targetDate.getDate() + 0);
-// targetDate.setHours(4);                         
-// targetDate.setMinutes(29);                      
-// targetDate.setSeconds(30);                       
-
-// const timer = document.getElementById('timer');
-// const days = document.getElementById('days');
-// const hours = document.getElementById('hours');
-// const minutes = document.getElementById('minutes');
-// const seconds = document.getElementById('seconds');
-
-// const mainTime = document.querySelector('.main__time');
-// const mainRef = document.querySelector('.main__ref');
-
-// function updateTime() {
-//   const now = new Date();
-//   const timeLeft = targetDate.getTime() - now.getTime();
-
-//   const daysRemaining = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-//   const hoursRemaining = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-//   const minutesRemaining = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-//   const secondsRemaining = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-//   days.textContent = `${daysRemaining}D`;
-//   hours.textContent = `${hoursRemaining}h`;
-//   minutes.textContent = `${minutesRemaining}m`;
-//   seconds.textContent = `${secondsRemaining}s`;
-
-//   if (timeLeft <= 0) {
-//     clearInterval(intervalId);
-//     mainTime.style.display = 'none';
-//     mainRef.style.display = 'none';
-//   }
-// }
-
-// const intervalId = setInterval(updateTime, 1000);
 
 
 
