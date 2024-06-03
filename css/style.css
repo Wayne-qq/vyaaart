@@ -6,11 +6,12 @@ body, html {
 }
 
 .main__home, .main__mining, .main__friend, .main__task, .main__user {
-    display: none;
+    display: block;
 }
 .main__home {
-    display: none;
+    display: block;
 }
+
 a,
 button,
 input,
@@ -32,6 +33,11 @@ textarea {
     left: 0;
     right: 0;
     bottom: 0;
+}
+
+.header {
+    background-color: #464646;
+    height: 70px;
 }
 
 
@@ -134,7 +140,12 @@ textarea {
     visibility: hidden; /* Спочатку приховуємо текст */
 }
 
-
+.main__time {
+    display: block; 
+}
+.main__time.hidden {
+    display: none;
+}
 
 .main__time {
     background-color: #000;
@@ -215,18 +226,115 @@ textarea {
 }
 
 
-.main__time {
+.timer__shh {
+    background: none;
+    display: flex;
+    align-items: center;
+    border: none;
+    margin-top: 30px;
+}
+.timer__shh-txt {
+    color: #CDCDCD;
+    text-align: center;
+    font-family: MuseoModerno;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-right: 9px;
+}
+
+
+
+.container__ref {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main__ref {
+    background-color: #000;
+    height: 100vh;
     display: block;
 }
-.main__time.hide {
-    display: none;
+
+.main__ref.hidden {
+    display: none; 
+}
+
+
+.ref__txt {
+    margin-top: 118px;
+    color: #AEAEAE;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 24px;
+    font-weight: 600;
+    max-width: 225px;
+    line-height: normal;
+}
+
+.ref__input {
+    border-radius: 12px;
+    border: 1px solid #BCBCBC;
+    padding: 19px;
+    display: flex;
+    align-items: center;
+    width: 235px;
+    margin-top: 40px;
+}
+
+.ref__input-txt {
+    color: #A3A3A3;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 500;
+    margin-right: auto;
+}
+
+
+.ref__back {
+    display: flex;
+    align-items: center;
+    margin-top: 53px;
+    background: none;
+    border: none;
+}
+
+.ref__back-txt {
+    color: #AEAEAE;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 20px;
+    font-weight: 600;
+    margin-left: 12px;
+}
+.ref_logo-tp {
+    color: #CDCDCD;
+    font-family: MuseoModerno;
+    font-size: 32px;
+    font-weight: 700;
+    margin-top: 150px;
+}
+
+.ref_logo-bt {
+    color: #CDCDCD;
+    font-family: MuseoModerno;
+    font-size: 16px;
+    font-weight: 200;
+    margin-top: 11px;
+}
+.ref__button-input {
+    background: none;
+    border: none;
 }
 
 
 .main__sub {
     background: #000000;
     height: 100vh;
-    display: none;
+    display: block;
 }
 
 .main__sub.hidden {
@@ -476,7 +584,7 @@ textarea {
     right: 0;
     left: 0;
     bottom: 20px;
-    position: fixed;
+    position: relative;
 }
 
 
@@ -540,6 +648,7 @@ textarea {
 	top: 0;
 	right: 2px;
 }
+
 
 .main__mining {
     background: #000000;
@@ -711,6 +820,17 @@ textarea {
     margin-top: 35px;
 }
 
+.friend__input {
+    margin-top: 16px;
+    border-radius: 12px;
+    border: 1px solid #BCBCBC;
+    display: flex;
+    align-items: center;
+    padding: 17.4px;
+    width: 238.2px;
+    margin-bottom: 24px;
+}
+
 
 .main__task {
     background: #000000;
@@ -865,5 +985,5 @@ textarea {
 
 
 .menu {
-    display: none;
+    display: block;
 }

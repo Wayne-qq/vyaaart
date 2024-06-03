@@ -1,6 +1,7 @@
 
 
 
+
 document.addEventListener("DOMContentLoaded", function() {
     setTimeout(function() {
         const logoText = document.getElementById('logo-text');
@@ -98,62 +99,170 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+document.addEventListener('DOMContentLoaded', function() {
+    // Отримання кнопок
+    var timerBtn = document.querySelector('.timer__shh');
+    var refBtn = document.querySelector('.ref__back');
+    var mainTime = document.querySelector('.main__time');
+
+    // Додавання обробника події для кнопки timer__shh
+    timerBtn.addEventListener('click', function() {
+        mainTime.classList.add('hidden'); // Додаємо клас, щоб сховати main__time
+    });
+
+    // Додавання обробника події для кнопки ref__back
+    refBtn.addEventListener('click', function() {
+        mainTime.classList.remove('hidden'); // Видаляємо клас, щоб показати main__time
+    });
+});
+
+
+
+
+// const targetDate = new Date();
+
+// targetDate.setDate(targetDate.getDate() + 0);
+// targetDate.setHours(4);                         
+// targetDate.setMinutes(29);                      
+// targetDate.setSeconds(30);                       
+
+// const timer = document.getElementById('timer');
+// const days = document.getElementById('days');
+// const hours = document.getElementById('hours');
+// const minutes = document.getElementById('minutes');
+// const seconds = document.getElementById('seconds');
+
+// const mainTime = document.querySelector('.main__time');
+// const mainRef = document.querySelector('.main__ref');
+
+// function updateTime() {
+//   const now = new Date();
+//   const timeLeft = targetDate.getTime() - now.getTime();
+
+//   const daysRemaining = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+//   const hoursRemaining = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+//   const minutesRemaining = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+//   const secondsRemaining = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+//   days.textContent = `${daysRemaining}D`;
+//   hours.textContent = `${hoursRemaining}h`;
+//   minutes.textContent = `${minutesRemaining}m`;
+//   seconds.textContent = `${secondsRemaining}s`;
+
+//   if (timeLeft <= 0) {
+//     clearInterval(intervalId);
+//     mainTime.style.display = 'none';
+//     mainRef.style.display = 'none';
+//   }
+// }
+
+// const intervalId = setInterval(updateTime, 1000);
+
+
+
+
+
+
+
+
+const targetDate = new Date();
+
+targetDate.setDate(targetDate.getDate() + 0);
+targetDate.setHours(4);                         
+targetDate.setMinutes(37);                      
+targetDate.setSeconds(1);                       
+
+const timer = document.getElementById('timer');
+const days = document.getElementById('days');
+const hours = document.getElementById('hours');
+const minutes = document.getElementById('minutes');
+const seconds = document.getElementById('seconds');
+
+const mainTime = document.querySelector('.main__time');
+const mainRef = document.querySelector('.main__ref');
+
+function updateTime() {
+  const now = new Date();
+  const timeLeft = targetDate.getTime() - now.getTime();
+
+  const daysRemaining = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+  const hoursRemaining = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutesRemaining = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+  const secondsRemaining = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+  days.textContent = `${daysRemaining}D`;
+  hours.textContent = `${hoursRemaining}h`;
+  minutes.textContent = `${minutesRemaining}m`;
+  seconds.textContent = `${secondsRemaining}s`;
+
+  if (timeLeft <= 0) {
+    clearInterval(intervalId);
+    mainTime.classList.add('hidden');
+    mainRef.classList.add('hidden');
+  }
+}
+
+const intervalId = setInterval(updateTime, 1000);
+
 
 
 
 
 
 document.addEventListener("DOMContentLoaded", function() {
-    function setCookie(name, value, days) {
-        var expires = "";
-        if (days) {
-            var date = new Date();
-            date.setTime(date.getTime() + (days*24*60*60*1000));
-            expires = "; expires=" + date.toUTCString();
+    // Отримати елементи
+    var menu = document.querySelector('.menu');
+    var mainPreloader = document.querySelector('.main__preloader');
+    var mainTime = document.querySelector('.main__time');
+    var mainRef = document.querySelector('.main__ref');
+    var mainSub = document.querySelector('.main__sub');
+
+    // Функція перевірки стану всіх елементів
+    function checkAllHidden() {
+        if (mainPreloader.classList.contains('hidden') &&
+            mainTime.classList.contains('hidden') &&
+            mainRef.classList.contains('hidden') &&
+            mainSub.classList.contains('hidden')) {
+            menu.style.position = 'fixed';
+        } else {
+            menu.style.position = 'relative';
         }
-        document.cookie = name + "=" + (value || "")  + expires + "; path=/";
     }
 
-    function getCookie(name) {
-        var nameEQ = name + "=";
-        var ca = document.cookie.split(';');
-        for(var i=0;i < ca.length;i++) {
-            var c = ca[i];
-            while (c.charAt(0)==' ') c = c.substring(1,c.length);
-            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-        }
-        return null;
-    }
-
-    function startTimer(endtime) {
-        const timerInterval = setInterval(function() {
-            const now = new Date().getTime();
-            const distance = endtime - now;
-
-            if (distance < 0) {
-                clearInterval(timerInterval);
-                document.querySelector('.main__time').classList.add('hide');
-                return;
+    // Створити спостерігача змін класів
+    var observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.attributeName === 'class') {
+                checkAllHidden();
             }
+        });
+    });
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    // Налаштування спостерігача
+    var config = {
+        attributes: true,
+        attributeFilter: ['class']
+    };
 
-            document.getElementById('days').textContent = days + "D";
-            document.getElementById('hours').textContent = hours + "h";
-            document.getElementById('minutes').textContent = minutes + "m";
-            document.getElementById('seconds').textContent = seconds + "s";
-        }, 1000);
+    // Почати спостереження за всіма main елементами
+    observer.observe(mainPreloader, config);
+    observer.observe(mainTime, config);
+    observer.observe(mainRef, config);
+    observer.observe(mainSub, config);
+
+    // Перевірити стан елементів на початку
+    checkAllHidden();
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    const user = Telegram.WebApp.init(); 
+    Telegram.WebApp.ready();             
+
+    const username = Telegram.WebApp.initDataUnsafe.user.username;
+    if (username) {
+        document.querySelector(".home__user").textContent = username;
+    } else {
+        document.querySelector(".home__user").textContent = 'Username not available';
     }
-
-    let endTime = getCookie("endTime");
-    if (!endTime) {
-        const now = new Date().getTime();
-        endTime = now + (2 * 24 * 60 * 60 * 1000) + (18 * 60 * 60 * 1000) + (37 * 60 * 1000) + (9 * 1000);
-        setCookie("endTime", endTime, 7); // Зберігаємо куки на 7 днів
-    }
-
-    startTimer(parseInt(endTime));
 });
