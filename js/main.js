@@ -256,13 +256,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 document.addEventListener("DOMContentLoaded", function() {
-    const user = Telegram.WebApp.init(); 
-    Telegram.WebApp.ready();             
+    Telegram.WebApp.ready();
 
-    const username = Telegram.WebApp.initDataUnsafe.user.username;
-    if (username) {
-        document.querySelector(".home__user").textContent = username;
+    // Використовуйте initDataUnsafe для доступу до даних користувача
+    const userData = Telegram.WebApp.initDataUnsafe.user;
+
+    // Перевіряємо, чи доступні дані користувача
+    if (userData && userData.username) {
+        document.querySelector(".home__user").textContent = userData.username;
     } else {
-        document.querySelector(".home__user").textContent = 'Username not available';
+        document.querySelector(".home__user").textContent = 'error';
     }
 });
