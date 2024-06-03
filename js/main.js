@@ -38,47 +38,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-// document.addEventListener("DOMContentLoaded", function() {
-//     const closeButton = document.querySelector('.close__error-sub');
-//     const mainElement = document.querySelector('.main__sub');
+document.addEventListener("DOMContentLoaded", function() {
+    const closeButton = document.querySelector('.close__error-sub');
+    const mainElement = document.querySelector('.main__sub');
 
-//     closeButton.addEventListener('click', function(event) {
-//         event.preventDefault();
-//         mainElement.classList.add('hidden');
-//     });
-// });
-
-
-const fetch = require('node-fetch');
-
-// Токен вашого бота
-const botToken = '7480014836:AAGbY8Ybylr8KWJjN-8JRktq0k-EYYeJvPc';
-// Посилання на ваш приватний канал
-const channelLink = 'https://t.me/+jOrwLOXob0o2YTIy';
-
-// Функція для перевірки підписки користувача на канал
-async function checkSubscription(username) {
-    const apiUrl = `https://api.telegram.org/bot${botToken}/getChatMember?chat_id=${channelLink}&user_id=${username}`;
-
-    try {
-        const response = await fetch(apiUrl);
-        const data = await response.json();
-
-        if (data.ok && data.result && (data.result.status === 'member' || data.result.status === 'administrator')) {
-            console.log('Користувач підписаний на канал.');
-            // Додаємо клас "hidden", якщо користувач підписаний на канал
-            document.getElementById('main__sub').classList.add('hidden');
-        } else {
-            console.log('Користувач не підписаний на канал.');
-        }
-    } catch (error) {
-        console.error('Сталася помилка при перевірці підписки на канал:', error);
-    }
-}
-
-// Викликаємо функцію для перевірки підписки користувача з його username
-checkSubscription('User_Username');
-
+    closeButton.addEventListener('click', function(event) {
+        event.preventDefault();
+        mainElement.classList.add('hidden');
+    });
+});
 
 
 
