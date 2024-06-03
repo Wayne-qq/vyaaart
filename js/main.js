@@ -255,16 +255,49 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
- document.addEventListener("DOMContentLoaded", function() {
-            Telegram.WebApp.ready();
 
-            // Використовуйте initDataUnsafe для доступу до даних користувача
-            const userData = Telegram.WebApp.initDataUnsafe.user;
 
-            // Перевіряємо, чи доступні дані користувача
-            if (userData && userData.username) {
-                document.querySelector(".home__user").textContent = userData.username;
-            } else {
-                document.querySelector(".home__user").textContent = 'error';
-            }
+
+
+
+// document.addEventListener("DOMContentLoaded", function() {
+//     Telegram.WebApp.ready();
+
+//     // Використовуйте initDataUnsafe для доступу до даних користувача
+//     const userData = Telegram.WebApp.initDataUnsafe.user;
+
+//     // Перевіряємо, чи доступні дані користувача
+//     if (userData && userData.username) {
+//         document.querySelector(".home__user").textContent = userData.username;
+//     } else {
+//         document.querySelector(".home__user").textContent = 'error';
+//     }
+// });
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    Telegram.WebApp.ready();
+
+    const userData = Telegram.WebApp.initDataUnsafe.user;
+
+    function updateUserText(selector, text) {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach(element => {
+            element.textContent = text;
         });
+    }
+
+    if (userData && userData.username) {
+        updateUserText(".home__user", userData.username);
+        updateUserText(".mining__userc", userData.username);
+        updateUserText(".friend__userc", userData.username);
+        updateUserText(".task__userc", userData.username);
+        updateUserText(".home__userc", userData.username);
+    } else {
+        updateUserText(".home__user", 'error');
+        updateUserText(".mining__userc", 'error');
+        updateUserText(".friend__userc", 'error');
+        updateUserText(".task__userc", 'error');
+        updateUserText(".home__userc", 'error');
+    }
+});
