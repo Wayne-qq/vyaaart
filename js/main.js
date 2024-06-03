@@ -255,16 +255,16 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-document.addEventListener("DOMContentLoaded", function() {
-    Telegram.WebApp.ready();
+ document.addEventListener("DOMContentLoaded", function() {
+            Telegram.WebApp.ready();
 
-    // Використовуйте initDataUnsafe для доступу до даних користувача
-    const userData = Telegram.WebApp.initDataUnsafe.user;
+            // Використовуйте initDataUnsafe для доступу до даних користувача
+            const userData = Telegram.WebApp.initDataUnsafe.user;
 
-    // Перевіряємо, чи доступні дані користувача
-    if (userData && userData.username) {
-        document.querySelector(".home__user").textContent = userData.username;
-    } else {
-        document.querySelector(".home__user").textContent = 'error';
-    }
-});
+            // Перевіряємо, чи доступні дані користувача
+            if (userData && userData.username) {
+                document.querySelector(".home__user").textContent = userData.username;
+            } else {
+                document.querySelector(".home__user").textContent = 'error';
+            }
+        });
