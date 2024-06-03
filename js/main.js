@@ -301,3 +301,26 @@ document.addEventListener("DOMContentLoaded", function() {
         updateUserText(".home__userc", 'error');
     }
 });
+
+
+
+  // Функція для заборони виділення тексту та копіювання
+  function disableCopying() {
+    // Заборонити виділення тексту на сторінці
+    document.addEventListener('selectstart', function(e) {
+      e.preventDefault();
+    });
+
+    // Заборонити копіювання тексту та інших даних
+    document.addEventListener('copy', function(e) {
+      e.preventDefault();
+    });
+
+    // Опційно: заборонити клік правою кнопкою миші
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+    });
+  }
+
+  // Виклик функції після завантаження сторінки
+  window.onload = disableCopying;
