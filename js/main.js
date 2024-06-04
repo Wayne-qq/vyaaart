@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function() {
     setTimeout(function() {
         var preloader = document.querySelector(".main__preloader");
         preloader.classList.add("hidden");
-    }, 2900); // Встановлюємо затримку в 2.5 секунди
+    }, 900); // Встановлюємо затримку в 2.5 секунди
 });
 
 
@@ -130,8 +130,8 @@ document.addEventListener('DOMContentLoaded', function() {
 const targetDate = new Date();
 
 targetDate.setDate(targetDate.getDate() + 0);
-targetDate.setHours(4);                         
-targetDate.setMinutes(37);                      
+targetDate.setHours(2);                         
+targetDate.setMinutes(21);                      
 targetDate.setSeconds(1);                       
 
 const timer = document.getElementById('timer');
@@ -318,3 +318,52 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Виклик функції після завантаження сторінки
   window.onload = disableCopying;
+
+
+
+
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const boostButtons = document.querySelectorAll('.mining__boost');
+    const popup = document.querySelector('.mining__popup');
+    const closeButton = document.querySelector('.mining__popup-clbtn');
+    const popupName = popup.querySelector('.mining__popup-name');
+    const popupPrice = popup.querySelector('.mining__popup-pricetxt');
+    const popupContent = popup.querySelector('.mining__popup-content'); // Якщо такого класу немає, додайте його до контейнера з вмістом попапу в HTML.
+
+    // Додаємо подію для кожної кнопки "Boost"
+    boostButtons.forEach(boostButton => {
+        boostButton.addEventListener('click', (event) => {
+            event.stopPropagation(); // Запобігаємо спливанню події
+            const info = boostButton.querySelector('.boost__info').textContent;
+            const price = boostButton.querySelector('.boost_price').textContent;
+            popupName.textContent = info;
+            popupPrice.textContent = price;
+
+            popup.classList.add('show');
+            popup.style.bottom = '-20px'; // Встановимо положення попапу
+        });
+    });
+
+    // Додаємо подію для кнопки закриття попапу
+    closeButton.addEventListener('click', () => {
+        closePopup();
+    });
+
+    // Додаємо подію для закриття попапу при кліку за його межами
+    document.addEventListener('click', (event) => {
+        if (!popup.contains(event.target)) {
+            closePopup();
+        }
+    });
+
+    // Функція для закриття попапу
+    function closePopup() {
+        popup.classList.remove('show');
+        popup.style.bottom = '-290px';
+    }
+});
+
+
+
+
