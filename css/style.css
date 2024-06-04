@@ -489,6 +489,10 @@ textarea {
     margin-bottom: 7px;
 }
 
+.home__balance img {
+    width: 14px;
+}
+
 .home__balance-txt {
     color: #FFF;
     text-align: center;
@@ -693,12 +697,90 @@ textarea {
 .mining__boost  {
     border-radius: 12px;
     border: 1px solid #BCBCBC;
-    width: 233px;
+    width: 273px;
     margin-top: 39px;
     display: flex;
     align-items: center;
     padding: 21px;
+    background: none;
+    
 }
+
+
+.mining__popup {
+    position: absolute;
+    bottom: -290px; /* Початкове положення поза межами видимої області */
+    left: 50%;
+    transform: translate(-50%, 0); /* Виправлено на translate(-50%, 0) */
+    width: 373px;
+    height: 271px;
+    flex-shrink: 0;
+    border-radius: 16px;
+    border: 2px solid #67FF59;
+    background: rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(52.7px);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: bottom 0.5s ease; /* Плавний перехід для зміни положення */
+}
+
+.mining__popup.show {
+    bottom: -20px; /* Кінцеве положення */
+}
+
+
+
+
+.mining__popup-clbtn {
+    background: none;
+    border: none;
+    margin-top: 7px;
+}
+.mining__popup-name {
+    color: #83FF77;
+    text-align: center;
+    font-family: MuseoModerno;
+    font-size: 24px;
+    font-weight: 600;
+    margin-top: 36px;
+}
+
+
+.mining__popup-price {
+    display: flex;
+    align-items: center;
+    margin-top: 26px;
+}
+
+.mining__popup-token {
+    width: 13px;
+    margin-right: 5px;
+}
+.mining__popup-pricetxt {
+    color: #DDD;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.mining__popup-buy {
+    border-radius: 30px;
+    border: 1px solid #FFF;
+    background: #050505;
+    box-shadow: 0px 3px 0px 0px #83FF77;
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    padding: 9.5px 60px;
+    margin-top: 27px;
+}
+
 
 .token__boost {
     width:11px;
@@ -788,6 +870,12 @@ textarea {
     display: flex;
     align-items: center;
     padding: 20px;
+}
+
+
+.friend__btn img {
+    width: 9px;
+    margin-bottom: -2px;
 }
 
 .friend__btn-info {
@@ -887,6 +975,11 @@ textarea {
     flex-shrink: 0;
     padding: 20px;
     margin-top: 17px;
+}
+
+.task__btn img {
+    width: 9px;
+    margin-bottom: -2px;
 }
 
 .btn__info {
