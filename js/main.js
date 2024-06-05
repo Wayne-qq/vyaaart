@@ -486,50 +486,55 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+  // Ініціалізація змінних з localStorage або за замовчуванням
+  let tapFarm = localStorage.getItem('tapFarm') ? parseInt(localStorage.getItem('tapFarm')) : 5;
+  let balance = localStorage.getItem('balance') ? parseInt(localStorage.getItem('balance')) : 0;
+  let tapCount = localStorage.getItem('tapCount') ? parseInt(localStorage.getItem('tapCount')) : 0;
 
+  function formatNumber(value) {
+      if (value >= 1000) {
+          return (value / 1000).toFixed(1) + 'k';
+      }
+      return value;
+  }
 
+  document.getElementById('mainBtn').addEventListener('click', function(event) {
+      handleTap(event.clientX, event.clientY);
+  });
 
-   // Ініціалізація змінних з localStorage або за замовчуванням
-   let tapFarm = localStorage.getItem('tapFarm') ? parseInt(localStorage.getItem('tapFarm')) : 5;
-   let balance = localStorage.getItem('balance') ? parseInt(localStorage.getItem('balance')) : 0;
-   let tapCount = localStorage.getItem('tapCount') ? parseInt(localStorage.getItem('tapCount')) : 0;
+  document.getElementById('mainBtn').addEventListener('touchstart', function(event) {
+      event.preventDefault(); // Запобігаємо стандартній обробці події
+      const touches = event.touches;
+      for (let i = 0; i < Math.min(touches.length, 3); i++) {
+          handleTap(touches[i].clientX, touches[i].clientY);
+      }
+  });
 
-   // Функція для форматування числа
-   function formatNumber(value) {
-       if (value >= 1000) {
-           return (value / 1000).toFixed(1) + 'k';
-       }
-       return value;
-   }
+  function handleTap(x, y) {
+      const floatingNumber = document.createElement('div');
+      floatingNumber.classList.add('floating-number');
+      floatingNumber.innerText = tapFarm;
 
-   document.getElementById('mainBtn').addEventListener('click', function(event) {
-       const x = event.clientX;
-       const y = event.clientY;
+      document.body.appendChild(floatingNumber);
 
-       const floatingNumber = document.createElement('div');
-       floatingNumber.classList.add('floating-number');
-       floatingNumber.innerText = tapFarm;
+      floatingNumber.style.left = `${x}px`;
+      floatingNumber.style.top = `${y}px`;
 
-       document.body.appendChild(floatingNumber);
+      // Збільшуємо лічильник натискань
+      tapCount++;
+      localStorage.setItem('tapCount', tapCount);
 
-       floatingNumber.style.left = `${x}px`;
-       floatingNumber.style.top = `${y}px`;
+      // Оновлюємо баланс
+      balance += tapFarm;
+      localStorage.setItem('balance', balance);
 
-       // Збільшуємо лічильник натискань
-       tapCount++;
-       localStorage.setItem('tapCount', tapCount);
+      // Оновлюємо текст балансу з використанням форматування
+      document.getElementById('balanceTxt').innerText = formatNumber(balance);
 
-       // Оновлюємо баланс
-       balance += tapFarm;
-       localStorage.setItem('balance', balance);
+      setTimeout(() => {
+          floatingNumber.remove();
+      }, 1000); // Час має відповідати тривалості анімації
+  }
 
-       // Оновлюємо текст балансу з використанням форматування
-       document.getElementById('balanceTxt').innerText = formatNumber(balance);
-
-       setTimeout(() => {
-           floatingNumber.remove();
-       }, 1000);  // Час має відповідати тривалості анімації
-   });
-
-   // Оновлення тексту балансу при завантаженні сторінки
-   document.getElementById('balanceTxt').innerText = formatNumber(balance);
+  // Оновлення тексту балансу при завантаженні сторінки
+  document.getElementById('balanceTxt').innerText = formatNumber(balance);
