@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function() {
     setTimeout(function() {
         var preloader = document.querySelector(".main__preloader");
         preloader.classList.add("hidden");
-    }, 900); // Встановлюємо затримку в 2.5 секунди
+    }, 100); // Встановлюємо затримку в 2.5 секунди
 });
 
 
@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
 const targetDate = new Date();
 
 targetDate.setDate(targetDate.getDate() + 0);
-targetDate.setHours(2);                         
+targetDate.setHours(1);                         
 targetDate.setMinutes(21);                      
 targetDate.setSeconds(1);                       
 
@@ -222,19 +222,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-// document.addEventListener("DOMContentLoaded", function() {
-//     Telegram.WebApp.ready();
-
-//     // Використовуйте initDataUnsafe для доступу до даних користувача
-//     const userData = Telegram.WebApp.initDataUnsafe.user;
-
-//     // Перевіряємо, чи доступні дані користувача
-//     if (userData && userData.username) {
-//         document.querySelector(".home__user").textContent = userData.username;
-//     } else {
-//         document.querySelector(".home__user").textContent = 'error';
-//     }
-// });
 
 
 
@@ -367,3 +354,182 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
+// Отримуємо всі кнопки friend__btn
+const btns = document.querySelectorAll('.friend__btn');
+// Отримуємо popup
+const popup = document.querySelector('.friend__popup');
+// Отримуємо елемент, в якому буде відображатися інформація про кількість запрошених друзів
+const popupInfo = document.querySelector('.friend__popup-name');
+// Отримуємо елемент, в якому буде відображатися ціна
+const popupPrice = document.querySelector('.friend__popup-pricetxt');
+// Отримуємо кнопку закриття popup
+const closeBtn = document.querySelector('.friend__popup-clbtn');
+
+// Додаємо обробник події для кожної кнопки
+btns.forEach(btn => {
+    btn.addEventListener('click', function() {
+        // Отримуємо текст з кнопки
+        const btnText = btn.querySelector('.friend__btn-info').textContent;
+        // Отримуємо ціну з кнопки
+        const btnPrice = btn.querySelector('.friend__btn-num').textContent;
+        // Змінюємо вміст popup в залежності від тексту кнопки
+        popupInfo.textContent = btnText;
+        // Змінюємо вміст popup в залежності від ціни кнопки
+        popupPrice.textContent = btnPrice;
+        // Відображаємо popup
+        popup.classList.add('show');
+    });
+});
+
+// Додаємо обробник події для кнопки закриття popup
+closeBtn.addEventListener('click', function() {
+    popup.classList.remove('show');
+});
+
+// Додаємо обробник події для кліка на документі
+document.addEventListener('click', function(event) {
+    // Перевіряємо, чи клік відбувся поза попапом
+    if (!popup.contains(event.target) && !event.target.classList.contains('friend__btn')) {
+        // Закриваємо popup
+        popup.classList.remove('show');
+    }
+});
+
+
+
+
+
+
+// Отримуємо всі кнопки task__btn
+const taskBtns = document.querySelectorAll('.task__btn');
+// Отримуємо popup для завдань
+const taskPopup = document.querySelector('.task__popup');
+// Отримуємо елемент, в якому буде відображатися інформація про завдання
+const taskPopupName = document.querySelector('.task__popup-name');
+// Отримуємо елемент, в якому буде відображатися ціна
+const taskPopupPrice = document.querySelector('.task__popup-pricetxt');
+// Отримуємо кнопку закриття popup для завдань
+const taskCloseBtn = document.querySelector('.task__popup-clbtn');
+
+// Додаємо обробник події для кожної кнопки завдання
+taskBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+        // Отримуємо текст з кнопки завдання
+        const btnText = btn.querySelector('.btn__info').textContent;
+        // Отримуємо ціну з кнопки завдання
+        const btnPrice = btn.querySelector('.task__num').textContent;
+        // Змінюємо вміст popup в залежності від тексту кнопки завдання
+        taskPopupName.textContent = btnText;
+        // Змінюємо вміст popup в залежності від ціни кнопки завдання
+        taskPopupPrice.textContent = btnPrice;
+        // Відображаємо popup для завдань
+        taskPopup.classList.add('show');
+    });
+});
+
+// Додаємо обробник події для кнопки закриття popup для завдань
+taskCloseBtn.addEventListener('click', function() {
+    taskPopup.classList.remove('show');
+});
+
+// Додаємо обробник події для кліка на документі для закриття popup для завдань
+document.addEventListener('click', function(event) {
+    // Перевіряємо, чи клік відбувся поза popup для завдань
+    if (!taskPopup.contains(event.target) && !event.target.classList.contains('task__btn')) {
+        // Закриваємо popup для завдань
+        taskPopup.classList.remove('show');
+    }
+});
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const links = document.querySelectorAll('.nav__link');
+    const texts = document.querySelectorAll('.menu__list-text');
+
+    function setActiveLink(activeLink) {
+        links.forEach(link => {
+            const text = link.querySelector('.menu__list-text');
+            if (link === activeLink) {
+                link.classList.add('active');
+                text.classList.add('active');
+            } else {
+                link.classList.remove('active');
+                text.classList.remove('active');
+            }
+        });
+    }
+
+    links.forEach(link => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault();
+            setActiveLink(link);
+        });
+    });
+
+    // Set the initial active link to the "Home" button (the first link)
+    if (links.length > 0) {
+        setActiveLink(links[0]);
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   // Ініціалізація змінних з localStorage або за замовчуванням
+   let tapFarm = localStorage.getItem('tapFarm') ? parseInt(localStorage.getItem('tapFarm')) : 5;
+   let balance = localStorage.getItem('balance') ? parseInt(localStorage.getItem('balance')) : 0;
+   let tapCount = localStorage.getItem('tapCount') ? parseInt(localStorage.getItem('tapCount')) : 0;
+
+   // Функція для форматування числа
+   function formatNumber(value) {
+       if (value >= 1000) {
+           return (value / 1000).toFixed(1) + 'k';
+       }
+       return value;
+   }
+
+   document.getElementById('mainBtn').addEventListener('click', function(event) {
+       const x = event.clientX;
+       const y = event.clientY;
+
+       const floatingNumber = document.createElement('div');
+       floatingNumber.classList.add('floating-number');
+       floatingNumber.innerText = tapFarm;
+
+       document.body.appendChild(floatingNumber);
+
+       floatingNumber.style.left = `${x}px`;
+       floatingNumber.style.top = `${y}px`;
+
+       // Збільшуємо лічильник натискань
+       tapCount++;
+       localStorage.setItem('tapCount', tapCount);
+
+       // Оновлюємо баланс
+       balance += tapFarm;
+       localStorage.setItem('balance', balance);
+
+       // Оновлюємо текст балансу з використанням форматування
+       document.getElementById('balanceTxt').innerText = formatNumber(balance);
+
+       setTimeout(() => {
+           floatingNumber.remove();
+       }, 1000);  // Час має відповідати тривалості анімації
+   });
+
+   // Оновлення тексту балансу при завантаженні сторінки
+   document.getElementById('balanceTxt').innerText = formatNumber(balance);
