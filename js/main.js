@@ -351,9 +351,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-
-
-
 // Отримуємо всі кнопки friend__btn
 const btns = document.querySelectorAll('.friend__btn');
 // Отримуємо popup
@@ -367,11 +364,12 @@ const closeBtn = document.querySelector('.friend__popup-clbtn');
 
 // Додаємо обробник події для кожної кнопки
 btns.forEach(btn => {
-    btn.addEventListener('click', function() {
+    btn.addEventListener('click', function(event) {
+        const actualBtn = event.target.closest('.friend__btn');
         // Отримуємо текст з кнопки
-        const btnText = btn.querySelector('.friend__btn-info').textContent;
+        const btnText = actualBtn.querySelector('.friend__btn-info').textContent;
         // Отримуємо ціну з кнопки
-        const btnPrice = btn.querySelector('.friend__btn-num').textContent;
+        const btnPrice = actualBtn.querySelector('.friend__btn-num').textContent;
         // Змінюємо вміст popup в залежності від тексту кнопки
         popupInfo.textContent = btnText;
         // Змінюємо вміст popup в залежності від ціни кнопки
@@ -388,8 +386,7 @@ closeBtn.addEventListener('click', function() {
 
 // Додаємо обробник події для кліка на документі
 document.addEventListener('click', function(event) {
-    // Перевіряємо, чи клік відбувся поза попапом
-    if (!popup.contains(event.target) && !event.target.classList.contains('friend__btn')) {
+    if (!popup.contains(event.target) && !event.target.closest('.friend__btn')) {
         // Закриваємо popup
         popup.classList.remove('show');
     }
@@ -413,11 +410,12 @@ const taskCloseBtn = document.querySelector('.task__popup-clbtn');
 
 // Додаємо обробник події для кожної кнопки завдання
 taskBtns.forEach(btn => {
-    btn.addEventListener('click', function() {
+    btn.addEventListener('click', function(event) {
+        const actualBtn = event.target.closest('.task__btn');
         // Отримуємо текст з кнопки завдання
-        const btnText = btn.querySelector('.btn__info').textContent;
+        const btnText = actualBtn.querySelector('.btn__info').textContent;
         // Отримуємо ціну з кнопки завдання
-        const btnPrice = btn.querySelector('.task__num').textContent;
+        const btnPrice = actualBtn.querySelector('.task__num').textContent;
         // Змінюємо вміст popup в залежності від тексту кнопки завдання
         taskPopupName.textContent = btnText;
         // Змінюємо вміст popup в залежності від ціни кнопки завдання
@@ -435,7 +433,7 @@ taskCloseBtn.addEventListener('click', function() {
 // Додаємо обробник події для кліка на документі для закриття popup для завдань
 document.addEventListener('click', function(event) {
     // Перевіряємо, чи клік відбувся поза popup для завдань
-    if (!taskPopup.contains(event.target) && !event.target.classList.contains('task__btn')) {
+    if (!taskPopup.contains(event.target) && !event.target.closest('.task__btn')) {
         // Закриваємо popup для завдань
         taskPopup.classList.remove('show');
     }
