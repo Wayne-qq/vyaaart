@@ -38,6 +38,7 @@ textarea {
 .header {
     background-color: #464646;
     height: 70px;
+    display: none;
 }
 
 
@@ -468,64 +469,68 @@ textarea {
     align-items: center;
     margin: 0 auto;
     max-width: 249px;
-    height: 241px;
-    border-radius: 12px;
-    border: 1px solid #BCBCBC;
+    height: 249px;
+    border-radius: 146px;
+    border: 1px solid #FFF;
+    background: #000;
     overflow: hidden;
 }
 
-.home__triangles-top {
-    margin-top: -3px;
-    margin-bottom: 40px;
+.home__main-btn {
+    background: none;
+    border: none;
+}
+
+.home__balance {
+    text-align: center;
+    display: inline-block;
+    margin-bottom: 7px;
+    margin-top: 60px;
 
 }
 
-
-
-.home__balance {
+.home__balance2 {
     display: flex;
     align-items: center;
-    max-height: 22px;
-    margin-bottom: 7px;
 }
 
 .home__balance img {
     width: 14px;
+    margin-bottom: -2px;
+    margin-right: 5px;
 }
 
 .home__balance-txt {
     color: #FFF;
     text-align: center;
-    font-family: Montserrat;
-    font-size: 14px;
+    font-family: MuseoModerno;
+    font-size: 24px;
     font-weight: 600;
-    margin-left: 4px;
 }
 
 
 .home__token-max {
-    margin-top: 39px;
-    color: #FFF;
+    color: #9B9B9B;
     text-align: center;
     font-family: Montserrat;
     font-size: 14px;
     font-weight: 600;
+    margin-top: 39px;
 }
 
 .home__token-info {
-    color: #8E8E8E;
-    text-align: center;
+    color: #484848;
     font-family: Montserrat;
-    font-size: 11px;
+    font-size: 7px;
     font-weight: 400;
-    max-width: 99px;
-    margin-top: 9px;
+    text-align: center;
+    margin-top: 2px;
 }
 
 
 .home__triangles-bt {
-    margin-top: auto;
-    margin-bottom: -3px;
+    margin-top: 5px;
+    
 }
 
 .home__mining-info {
@@ -564,21 +569,33 @@ textarea {
     text-align: center;
 }
 
-.home__menu {
-    display: flex;
-    align-items: center;
-    max-width: 321px;
-    justify-content: space-between;
+.home__main-btn {
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    position: relative;
 }
-
-.home__menu-btn {
-    border-radius: 63px;
-    background: rgba(129, 129, 129, 0.32);
-    backdrop-filter: blur(3.5px);
-    width: 30px;
-    height: 30px;
-    flex-shrink: 0;
-    padding: 10px;
+.floating-number {
+    position: absolute;
+    animation: floatUp 2s ease-out forwards;
+    pointer-events: none;
+    color: #828282;
+    text-align: center;
+    font-family: MuseoModerno;
+    font-size: 28px;
+    font-weight: 600;
+}
+@keyframes floatUp {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-200px);
+    }
 }
 
 
@@ -717,8 +734,7 @@ textarea {
     flex-shrink: 0;
     border-radius: 16px;
     border: 2px solid #67FF59;
-    background: rgba(0, 0, 0, 0.05);
-    backdrop-filter: blur(52.7px);
+    background: linear-gradient(0deg, #000 43.17%, #67FF59 273.99%);
     z-index: 1;
     display: flex;
     flex-direction: column;
@@ -870,6 +886,9 @@ textarea {
     display: flex;
     align-items: center;
     padding: 20px;
+    background: none;
+    height: 59.46px;
+    width: 274.32px;
 }
 
 
@@ -918,6 +937,89 @@ textarea {
     width: 238.2px;
     margin-bottom: 24px;
 }
+
+
+
+
+
+.friend__popup {
+    position: absolute;
+    bottom: -290px; /* Початкове положення поза межами видимої області */
+    left: 50%;
+    transform: translate(-50%, 0); /* Виправлено на translate(-50%, 0) */
+    width: 373px;
+    height: 271px;
+    flex-shrink: 0;
+    border-radius: 16px;
+    border: 2px solid #67FF59;
+    background: linear-gradient(0deg, #000 43.17%, #67FF59 273.99%);
+    /* background: rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(21.200000762939453px); */
+    /* background-color: #000; */
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: bottom 0.5s ease; /* Плавний перехід для зміни положення */
+}
+
+.friend__popup.show {
+    bottom: -20px; 
+} 
+
+
+.friend__popup-clbtn {
+    background: none;
+    border: none;
+    margin-top: 7px;
+}
+
+.friend__popup-name {
+    color: #83FF77;
+    text-align: center;
+    font-family: MuseoModerno;
+    font-size: 24px;
+    font-weight: 600;
+    margin-top: 36px;
+}
+
+
+.friend__popup-price {
+    display: flex;
+    align-items: center;
+    margin-top: 26px;
+}
+
+
+.friend__popup-token {
+    width: 13px;
+    margin-right: 5px;
+}
+.friend__popup-pricetxt {
+    color: #DDD;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.friend__popup-buy {
+    border-radius: 30px;
+    border: 1px solid #FFF;
+    background: #050505;
+    box-shadow: 0px 3px 0px 0px #83FF77;
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    padding: 9.5px 60px;
+    margin-top: 27px;
+}
+
+
+
 
 
 .main__task {
@@ -970,11 +1072,13 @@ textarea {
     align-items: center;
     border-radius: 12px;
     border: 1px solid #BCBCBC;
-    width: 233px;
-    height: 18px;
+    width: 273px;
+    height: 58px;
     flex-shrink: 0;
+    background: none;
     padding: 20px;
     margin-top: 17px;
+
 }
 
 .task__btn img {
@@ -1014,6 +1118,87 @@ textarea {
     margin: 0 auto;
     margin-top: 31px;
 }
+
+
+
+
+
+.task__popup {
+    position: absolute;
+    bottom: -290px; /* Початкове положення поза межами видимої області */
+    left: 50%;
+    transform: translate(-50%, 0); /* Виправлено на translate(-50%, 0) */
+    width: 373px;
+    height: 271px;
+    flex-shrink: 0;
+    border-radius: 16px;
+    border: 2px solid #67FF59;
+    background: linear-gradient(0deg, #000 43.17%, #67FF59 273.99%);
+    /* background: rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(21.200000762939453px); */
+    /* background-color: #000; */
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: bottom 0.5s ease; /* Плавний перехід для зміни положення */
+}
+
+.task__popup.show {
+    bottom: -20px; 
+} 
+
+
+.task__popup-clbtn {
+    background: none;
+    border: none;
+    margin-top: 7px;
+}
+
+.task__popup-name {
+    color: #83FF77;
+    text-align: center;
+    font-family: MuseoModerno;
+    font-size: 24px;
+    font-weight: 600;
+    margin-top: 36px;
+}
+
+
+.task__popup-price {
+    display: flex;
+    align-items: center;
+    margin-top: 26px;
+}
+
+
+.task__popup-token {
+    width: 13px;
+    margin-right: 5px;
+}
+.task__popup-pricetxt {
+    color: #DDD;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.task__popup-buy {
+    border-radius: 30px;
+    border: 1px solid #FFF;
+    background: #050505;
+    box-shadow: 0px 3px 0px 0px #83FF77;
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    padding: 9.5px 60px;
+    margin-top: 27px;
+}
+
 
 .main__user {
     background: #000;
@@ -1079,4 +1264,26 @@ textarea {
 
 .menu {
     display: block;
+}
+
+
+
+
+
+
+  .nav__link {
+    fill: #D4D4D4;
+}
+
+.nav__link.active {
+    fill: #67FF59;
+}
+
+
+.menu__list-text {
+    color: #D4D4D4; /* Додаємо колір тексту для .nav__link */
+}
+
+.menu__list-text.active {
+    color: #67FF59; /* Змінюємо колір тексту для активного стану */
 }
