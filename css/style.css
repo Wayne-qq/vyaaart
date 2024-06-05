@@ -494,6 +494,10 @@ textarea {
     align-items: center;
 }
 
+.home__triangles-tp {
+    margin-top: -2px;
+}
+
 .home__balance img {
     width: 14px;
     margin-bottom: -2px;
@@ -529,7 +533,7 @@ textarea {
 
 
 .home__triangles-bt {
-    margin-top: 5px;
+    margin-top: 7px;
     
 }
 
