@@ -3,6 +3,8 @@ body, html {
     padding: 0;
     height: 100%;
     overflow: hidden;
+    font-family: MuseoModerno, sans-serif;
+
 }
 
 .main__home, .main__mining, .main__friend, .main__task, .main__user {
@@ -581,6 +583,14 @@ textarea {
     font-size: 16px;
     position: relative;
 }
+
+        
+.suffix {
+    font-family: MuseoModerno;
+}
+
+
+
 .floating-number {
     position: absolute;
     animation: floatUp 2s ease-out forwards;
@@ -588,7 +598,7 @@ textarea {
     color: #828282;
     text-align: center;
     font-family: MuseoModerno;
-    font-size: 28px;
+    font-size: 30px;
     font-weight: 600;
 }
 @keyframes floatUp {
