@@ -449,27 +449,27 @@
 
   <script src="./js/main.js"></script>
   <script type="module">
-    // import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-    // import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
-    // import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-    // import { initializeDatabase } from '/js/database.js';
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
+    import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+    import { initializeDatabase } from '/js/database.js';
 
-    // const firebaseConfig = {
-    //   apiKey: "AIzaSyDkghsJTSbeeFAgCI0Q7MZs4gvwqqpEU-A",
-    //   authDomain: "vaard-23961.firebaseapp.com",
-    //   projectId: "vaard-23961",
-    //   storageBucket: "vaard-23961.appspot.com",
-    //   messagingSenderId: "452654656588",
-    //   appId: "1:452654656588:web:e8779c5ce22115a6bcd8e9",
-    //   measurementId: "G-QF3008CR1Z"
-    // };
+    const firebaseConfig = {
+      apiKey: "AIzaSyDkghsJTSbeeFAgCI0Q7MZs4gvwqqpEU-A",
+      authDomain: "vaard-23961.firebaseapp.com",
+      projectId: "vaard-23961",
+      storageBucket: "vaard-23961.appspot.com",
+      messagingSenderId: "452654656588",
+      appId: "1:452654656588:web:e8779c5ce22115a6bcd8e9",
+      measurementId: "G-QF3008CR1Z"
+    };
 
-    // const app = initializeApp(firebaseConfig);
-    // const analytics = getAnalytics(app);
-    // const db = getFirestore(app);
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const db = getFirestore(app);
 
-    // // Передача db в функцію ініціалізації з database.js
-    // initializeDatabase(db);
+    // Передача db в функцію ініціалізації з database.js
+    initializeDatabase(db);
   </script>
 </body>
 
