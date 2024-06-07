@@ -7,7 +7,7 @@ export function initializeDatabase(db) {
     try {
       // Додавання документу з текстом "привіт гіт" у вашу колекцію "greetings"
       await addDoc(collection(db, "greetings"), {
-        message: "Я додав дані до бази 3"
+        message: "Привіт фаєр"
       });
 
       console.log("Дані успішно додані до бази даних");
