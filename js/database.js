@@ -5,9 +5,9 @@ export function initializeDatabase(db) {
   // Функція для додавання даних до бази даних Firebase
   async function addToDatabase() {
     try {
-      // Додавання документу з текстом "привіт" у вашу колекцію "greetings"
+      // Додавання документу з текстом "привіт гіт" у вашу колекцію "greetings"
       await addDoc(collection(db, "greetings"), {
-        message: "привіт гітдва"
+        message: "Я додав дані до бази 3"
       });
 
       console.log("Дані успішно додані до бази даних");
