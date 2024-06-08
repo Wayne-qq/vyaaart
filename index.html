@@ -442,34 +442,34 @@
           <div class="menu__list-text" href="#">
             Tasks
           </div>
-        </a>
+        </a>    
       </li>
     </ul>
   </nav>
 
   <script src="./js/main.js"></script>
   <script type="module">
+    // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
-    import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-    import { initializeDatabase } from '/js/database.js';
-
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
     const firebaseConfig = {
-      apiKey: "AIzaSyDkghsJTSbeeFAgCI0Q7MZs4gvwqqpEU-A",
-      authDomain: "vaard-23961.firebaseapp.com",
-      projectId: "vaard-23961",
-      storageBucket: "vaard-23961.appspot.com",
-      messagingSenderId: "452654656588",
-      appId: "1:452654656588:web:e8779c5ce22115a6bcd8e9",
-      measurementId: "G-QF3008CR1Z"
+      apiKey: "AIzaSyC34eG9MBN7mICxDLYaMOTbdkOkQb3eJCU",
+      authDomain: "slavik-99da6.firebaseapp.com",
+      projectId: "slavik-99da6",
+      storageBucket: "slavik-99da6.appspot.com",
+      messagingSenderId: "910542232542",
+      appId: "1:910542232542:web:b7457bb73f7242c2195b4f",
+      measurementId: "G-36J6FLCSJ8"
     };
-
+  
+    // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
-    const db = getFirestore(app);
-
-    // Передача db в функцію ініціалізації з database.js
-    initializeDatabase(db);
   </script>
 </body>
 
